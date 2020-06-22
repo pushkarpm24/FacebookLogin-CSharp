@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
 
@@ -18,21 +19,19 @@ namespace FacebookLoginSel.PageObject
             PageFactory.InitElements(driver,this);
         }
 
-        [FindsBy(How = How.XPath,Using = "//input[@id='email']")]
-        public IWebElement EmailTextbox { get; set; }
-        [FindsBy(How = How.XPath, Using = "//input[@id='pass']")]
-        public IWebElement PassTextbox { get; set; }
-        [FindsBy(How = How.XPath, Using = "//*[@id='loginbutton']")]
-        public IWebElement LoginButton { get; set; }
+        [FindsBy(How = How.Id, Using = "email")]
+        public IWebElement EmailTextbox;
+        [FindsBy(How = How.Id, Using = "pass")]
+        public IWebElement PassTextbox;
+        [FindsBy(How = How.XPath, Using = "//*[@id='u_0_b']")]
+        public IWebElement LoginButton;
 
-        public void NavigateToHomePage()
+        public void GoToHomePage()
         {
             EmailTextbox.SendKeys("pushkarmorey555@gmail.com");
-            Thread.Sleep(1000);
             PassTextbox.SendKeys("pushkarpm2430");
-            Thread.Sleep(1000);
             LoginButton.Click();
-            Thread.Sleep(1000);
+            Thread.Sleep(5000);
 
         }
     }

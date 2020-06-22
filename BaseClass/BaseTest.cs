@@ -15,22 +15,31 @@ namespace FacebookLoginSel.BaseClass
     {
         public IWebDriver driver;
 
-        [SetUp]
-        public void Open()
+        [OneTimeSetUp]
+        public void Initilize()
         {
+            //using chrome options to disable unwanted notifications
             ChromeOptions opt = new ChromeOptions();
             opt.AddArguments("--disable-notifications");
 
-            driver = new ChromeDriver(opt);            
+            //Launch the chrome browser
+            driver = new ChromeDriver(opt);
+
+            //Using implicitly wait 
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(30);
+
+            //Maximizing the window
             driver.Manage().Window.Maximize();
+
+            //Enter the url
             driver.Url = "https://www.facebook.com/";
 
         }
 
-        [TearDown]
+        [OneTimeTearDown]
         public void Close()
         {
-            Thread.Sleep(30000);
+            Thread.Sleep(5000);
             driver.Quit();
             
         }

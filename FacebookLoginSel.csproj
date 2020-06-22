@@ -48,8 +48,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseClass\BaseTest.cs" />
-    <Compile Include="PageObject\LoginPage.cs" />
-    <Compile Include="PageObject\ArticlePage.cs" />
+    <Compile Include="Pages\LoginPage.cs" />
+    <Compile Include="Pages\ArticlePage.cs" />
     <Compile Include="TestScripts\Module1.cs" />
   </ItemGroup>
   <ItemGroup>
