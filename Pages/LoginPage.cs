@@ -8,7 +8,7 @@ using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
 
-namespace FacebookLoginSel.PageObject
+namespace FacebookLoginSel.Pages
 {
     public class LoginPage
     {
@@ -28,8 +28,10 @@ namespace FacebookLoginSel.PageObject
 
         public void GoToHomePage()
         {
-            EmailTextbox.SendKeys("pushkarmorey555@gmail.com");
-            PassTextbox.SendKeys("pushkarpm2430");
+            Credentials cred = new Credentials();
+
+            EmailTextbox.SendKeys(cred.email);
+            PassTextbox.SendKeys(cred.password);
             LoginButton.Click();
             Thread.Sleep(5000);
 

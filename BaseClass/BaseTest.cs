@@ -33,7 +33,6 @@ namespace FacebookLoginSel.BaseClass
 
             //Enter the url
             driver.Url = "https://www.facebook.com/";
-
         }
 
         [OneTimeTearDown]
