@@ -48,15 +48,14 @@ namespace FacebookLoginSel.TestScripts
             string expectedPageTitle = "Facebook";
             string actualPageTitle = driver.Title;
             Console.WriteLine("Expected Title is:"+expectedPageTitle);
-            Console.WriteLine("Actual Title is:"+actualPageTitle);
+            Console.WriteLine("Actual Title is:"+actualPageTitle);          
 
-            Screenshot ss = ((ITakesScreenshot)driver).GetScreenshot();
-            ss.SaveAsFile(DateTime.Now.ToShortDateString() + "C:\\Users\\HP\\source\\repos\\FacebookLoginSel\\ScreenShot", ScreenshotImageFormat.Png);
-            //Screenshot ss = ((ITakesScreenshot)driver).GetScreenshot();
-            //ss.SaveAsFile("C:\\Users\\HP\\source\\repos\\FacebookLoginSel\\ScreenShot\\one.png", ScreenshotImageFormat.Png);
             Assert.AreEqual(expectedPageTitle, actualPageTitle);
 
-           
+
+            Screenshot ss = ((ITakesScreenshot)driver).GetScreenshot();
+            ss.SaveAsFile("C:\\Users\\HP\\source\\repos\\FacebookLoginSel\\ScreenShot\\one.png", ScreenshotImageFormat.Png);
+
         }
 
         [Test, Order(1)]
@@ -66,12 +65,12 @@ namespace FacebookLoginSel.TestScripts
 
             ArticlePage article = new ArticlePage(driver);
             article.UploadThArticle();
-
-            test.Log(Status.Info, "Articles Get Uploaded Successfully");
+            test.Log(Status.Info, "Articles Get Uploaded Successfully");            
 
             Assert.IsTrue(driver.FindElement(By.XPath("//img[@class='_s0 _4ooo _1x2_ _1ve7 _1gax img']")).Displayed);
-           Screenshot ss = ((ITakesScreenshot)driver).GetScreenshot();           
-           ss.SaveAsFile(DateTime.Now.ToShortDateString()+ "C:\\Users\\HP\\source\\repos\\FacebookLoginSel\\ScreenShot.png", ScreenshotImageFormat.Png);
+
+            Screenshot ss = ((ITakesScreenshot)driver).GetScreenshot();
+            ss.SaveAsFile("C:\\Users\\HP\\source\\repos\\FacebookLoginSel\\ScreenShot\\one.png", ScreenshotImageFormat.Png);
 
         }         
 
