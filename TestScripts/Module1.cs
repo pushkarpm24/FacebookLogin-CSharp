@@ -1,4 +1,5 @@
 ﻿using AventStack.ExtentReports;
+using AventStack.ExtentReports.Configuration;
 using AventStack.ExtentReports.Reporter;
 using FacebookLoginSel.BaseClass;
 using FacebookLoginSel.Pages;
@@ -6,6 +7,7 @@ using NUnit.Framework;
 using NUnit.Framework.Internal;
 using OpenQA.Selenium;
 using System;
+using System.Configuration;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,10 +21,10 @@ namespace FacebookLoginSel.TestScripts
     {
         ExtentReports extent = null;
         //Screenshot ss = null;
-
+       
         [OneTimeSetUp]
         public void ExtentStart()
-        {
+        {            
             extent = new ExtentReports();
             var htmlReporter = new ExtentHtmlReporter(@"C:\Users\HP\source\repos\FacebookLoginSel\ExtentReports\Module1.html");
             extent.AttachReporter(htmlReporter);

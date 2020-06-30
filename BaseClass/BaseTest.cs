@@ -4,6 +4,7 @@ using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Remote;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -32,7 +33,8 @@ namespace FacebookLoginSel.BaseClass
             driver.Manage().Window.Maximize();
 
             //Enter the url
-            driver.Url = "https://www.facebook.com/";
+            string facebookUrl = ConfigurationManager.AppSettings["url"];
+            driver.Url = facebookUrl;
         }
 
         [OneTimeTearDown]
