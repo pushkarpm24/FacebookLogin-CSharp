@@ -20,8 +20,12 @@ namespace FacebookLoginSel.TestScripts
     [TestFixture]
     public class Module1 : BaseTest
     {
-        ExtentReports extent = null;     
-                      
+        ExtentReports extent = null;
+
+        //applied logger in console
+        private static readonly log4net.ILog log =
+            log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         [OneTimeSetUp]
         public void ExtentStart()
         {            
@@ -54,7 +58,7 @@ namespace FacebookLoginSel.TestScripts
             Console.WriteLine("Actual Title is:"+actualPageTitle);          
 
             Assert.AreEqual(expectedPageTitle, actualPageTitle);
-
+            log.Info("login verification successfull");
 
             Screenshot ss = ((ITakesScreenshot)driver).GetScreenshot();
             ss.SaveAsFile("C:\\Users\\HP\\source\\repos\\FacebookLoginSel\\ScreenShot\\one.png", ScreenshotImageFormat.Png);
@@ -71,6 +75,7 @@ namespace FacebookLoginSel.TestScripts
             test.Log(Status.Info, "Articles Get Uploaded Successfully");            
 
             Assert.IsTrue(driver.FindElement(By.XPath("//img[@class='_s0 _4ooo _1x2_ _1ve7 _1gax img']")).Displayed);
+            log.Info("Logout verification successfull");
 
             Screenshot ss = ((ITakesScreenshot)driver).GetScreenshot();
             ss.SaveAsFile("C:\\Users\\HP\\source\\repos\\FacebookLoginSel\\ScreenShot\\one.png", ScreenshotImageFormat.Png);

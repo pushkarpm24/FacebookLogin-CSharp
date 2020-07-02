@@ -108,6 +108,12 @@
     <Compile Include="Credentials.cs" />
     <Compile Include="Pages\LoginPage.cs" />
     <Compile Include="Pages\ArticlePage.cs" />
+    <Compile Include="Properties\AssemblyInfo1.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
     <Compile Include="TestScripts\Module1.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -116,6 +122,10 @@
     <None Include="App.config" />
     <None Include="Cred.json" />
     <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <COMReference Include="AutoItX3Lib">
@@ -130,6 +140,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ExtentReports\" />
+    <Folder Include="Logs\" />
     <Folder Include="ScreenShot\" />
   </ItemGroup>
   <ItemGroup>

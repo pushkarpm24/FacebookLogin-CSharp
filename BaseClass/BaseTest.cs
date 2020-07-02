@@ -1,4 +1,5 @@
-﻿using log4net.Config;
+﻿using AventStack.ExtentReports.Model;
+using log4net.Config;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
@@ -16,13 +17,7 @@ namespace FacebookLoginSel.BaseClass
 {
     public class BaseTest
     {
-        public IWebDriver driver;
-
-        //Configure Log4Net
-       // BasicConfigurator.Configure();
-        
-        //Creating a logger
-       // LogManager.GetLogger(CodeTypeOfExpression())
+        public IWebDriver driver;       
 
         [OneTimeSetUp]
         public void Initilize()
@@ -39,7 +34,7 @@ namespace FacebookLoginSel.BaseClass
 
             //Maximizing the window
             driver.Manage().Window.Maximize();
-
+            
             //Enter the url
             string facebookUrl = ConfigurationManager.AppSettings["url"];
             driver.Url = facebookUrl;
