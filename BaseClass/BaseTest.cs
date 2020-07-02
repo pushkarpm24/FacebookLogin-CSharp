@@ -1,8 +1,10 @@
-﻿using NUnit.Framework;
+﻿using log4net.Config;
+using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Remote;
 using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
@@ -15,6 +17,12 @@ namespace FacebookLoginSel.BaseClass
     public class BaseTest
     {
         public IWebDriver driver;
+
+        //Configure Log4Net
+       // BasicConfigurator.Configure();
+        
+        //Creating a logger
+       // LogManager.GetLogger(CodeTypeOfExpression())
 
         [OneTimeSetUp]
         public void Initilize()

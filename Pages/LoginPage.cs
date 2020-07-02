@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using FacebookLoginSel.AccessDataExel;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
@@ -26,12 +27,15 @@ namespace FacebookLoginSel.Pages
         [FindsBy(How = How.XPath, Using = "//*[@id='u_0_b']")]
         public IWebElement LoginButton;
 
-        public void GoToHomePage()
-        {
-            Credentials cred = new Credentials();
+        public string testName { get; private set; }
 
-            EmailTextbox.SendKeys(cred.email);
-            PassTextbox.SendKeys(cred.password);
+        public void GoToHomePage(string testName)
+        {
+            //Credentials cred = new Credentials();
+            var userData = ExelDataAccess.GetTestData(testName);
+
+            EmailTextbox.SendKeys(userData.Username);
+            PassTextbox.SendKeys(userData.Password);
             LoginButton.Click();
             Thread.Sleep(5000);
 

@@ -13,15 +13,15 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using log4net.Config;
 
 namespace FacebookLoginSel.TestScripts
 {
     [TestFixture]
     public class Module1 : BaseTest
     {
-        ExtentReports extent = null;
-        //Screenshot ss = null;
-       
+        ExtentReports extent = null;     
+                      
         [OneTimeSetUp]
         public void ExtentStart()
         {            
@@ -37,13 +37,14 @@ namespace FacebookLoginSel.TestScripts
             extent.Flush();
         }
 
+
         [Test, Order(0)]
         public void LoginTest()
         {
             ExtentTest test = extent.CreateTest("LoginTest").Info("Login Test Started");
                        
             LoginPage login = new LoginPage(driver);
-            login.GoToHomePage();
+            login.GoToHomePage("LogInTest");
 
             test.Log(Status.Info, "Login Done");
 
