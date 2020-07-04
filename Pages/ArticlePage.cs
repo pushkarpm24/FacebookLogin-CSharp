@@ -1,5 +1,6 @@
 ﻿using AutoIt;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.PageObjects;
 using System;
 using System.Collections.Generic;
@@ -24,9 +25,7 @@ namespace FacebookLoginSel.Pages
         [FindsBy(How = How.XPath, Using = "//a[@class='_7kfu']")]
         public IWebElement WriteSomethingBox;
         [FindsBy(How = How.XPath, Using = "//a[@class='_7kfu']")]
-        public IWebElement EnterSomethingInBox;
-        [FindsBy(How = How.XPath, Using = "//div[@class='_3jk']")]
-        public IWebElement PhotoVideoButton;
+        public IWebElement EnterSomethingInBox;        
         [FindsBy(How = How.XPath, Using = "//a[@class='__9u __9t']//div[@class='_3jk']")]
         public IWebElement ChooseFileButton;
         [FindsBy(How = How.XPath, Using = "//div[@class='_3-w4 _3-w6']")]
@@ -41,13 +40,15 @@ namespace FacebookLoginSel.Pages
 
         public void UploadThArticle()
         {
-         
+            Actions actions = new Actions(driver);
+
             WriteSomethingBox.Click();
             Thread.Sleep(3000);
             EnterSomethingInBox.SendKeys("ppushkarpm.... This is my First selenium script...");
             Thread.Sleep(5000);
 
-            PhotoVideoButton.Click();
+            
+            actions.Click(driver.FindElement(By.XPath("//div[@class='_3jk']"))).Build().Perform();
             Thread.Sleep(3000);
             Process.Start("E:\\PhotoUploadScript");
             Thread.Sleep(3000);

@@ -14,6 +14,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using log4net.Config;
+using System.Net.Mail;
 
 namespace FacebookLoginSel.TestScripts
 {
@@ -21,7 +22,7 @@ namespace FacebookLoginSel.TestScripts
     public class Module1 : BaseTest
     {
         ExtentReports extent = null;
-
+        
         //applied logger in console
         private static readonly log4net.ILog log =
             log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
@@ -63,6 +64,24 @@ namespace FacebookLoginSel.TestScripts
             Screenshot ss = ((ITakesScreenshot)driver).GetScreenshot();
             ss.SaveAsFile("C:\\Users\\HP\\source\\repos\\FacebookLoginSel\\ScreenShot\\one.png", ScreenshotImageFormat.Png);
 
+            MailMessage mail = new MailMessage();
+            SmtpClient SmtpServer = new SmtpClient("smtp.live.com");
+            mail.From = new MailAddress("moreypushkar24@outlook.com");
+            mail.To.Add("moreypushkar24@outlook.com");
+            mail.Subject = "Test Mail....";
+            mail.Body = "Mail With Attachment";
+
+
+            System.Net.Mail.Attachment attachment;
+            attachment = new System.Net.Mail.Attachment("C:/Users/HP/source/repos/FacebookLoginSel/ExtentReports/index.html");
+            mail.Attachments.Add(attachment);
+
+            SmtpServer.Port = 587;
+            SmtpServer.Credentials = new System.Net.NetworkCredential("moreypushkar24@outlook.com", "pushkaru24");
+            SmtpServer.EnableSsl = true;
+
+            SmtpServer.Send(mail);
+
         }
 
         [Test, Order(1)]
@@ -76,12 +95,11 @@ namespace FacebookLoginSel.TestScripts
 
             Assert.IsTrue(driver.FindElement(By.XPath("//img[@class='_s0 _4ooo _1x2_ _1ve7 _1gax img']")).Displayed);
             log.Info("Logout verification successfull");
-
+            
             Screenshot ss = ((ITakesScreenshot)driver).GetScreenshot();
             ss.SaveAsFile("C:\\Users\\HP\\source\\repos\\FacebookLoginSel\\ScreenShot\\one.png", ScreenshotImageFormat.Png);
-
         }         
-
+        
     }
 }
     

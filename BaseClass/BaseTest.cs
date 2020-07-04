@@ -1,5 +1,6 @@
 ﻿using AventStack.ExtentReports.Model;
 using log4net.Config;
+using log4net.Layout;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
@@ -12,16 +13,19 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Net.Mail;
+using System.Net;
 
 namespace FacebookLoginSel.BaseClass
 {
     public class BaseTest
     {
-        public IWebDriver driver;       
-
+        public IWebDriver driver;
+       
         [OneTimeSetUp]
         public void Initilize()
-        {
+        {           
+           
             //using chrome options to disable unwanted notifications
             ChromeOptions opt = new ChromeOptions();
             opt.AddArguments("--disable-notifications");
@@ -43,7 +47,7 @@ namespace FacebookLoginSel.BaseClass
         [OneTimeTearDown]
         public void Close()
         {
-            Thread.Sleep(5000);
+            Thread.Sleep(5000);            
             driver.Quit();
             
         }
