@@ -53,6 +53,7 @@ namespace FacebookLoginSel.TestScripts
 
             test.Log(Status.Info, "Login Done");
 
+            //verifying login
             string expectedPageTitle = "Facebook";
             string actualPageTitle = driver.Title;
             Console.WriteLine("Expected Title is:"+expectedPageTitle);
@@ -61,9 +62,11 @@ namespace FacebookLoginSel.TestScripts
             Assert.AreEqual(expectedPageTitle, actualPageTitle);
             log.Info("login verification successfull");
 
+            //taking screenshot anfter login
             Screenshot ss = ((ITakesScreenshot)driver).GetScreenshot();
-            ss.SaveAsFile("C:\\Users\\HP\\source\\repos\\FacebookLoginSel\\ScreenShot\\one.png", ScreenshotImageFormat.Png);
+            ss.SaveAsFile("C:\\Users\\HP\\source\\repos\\FacebookLoginSel\\ScreenShot\\Two.png", ScreenshotImageFormat.Png);
 
+            //sending email
             MailMessage mail = new MailMessage();
             SmtpClient SmtpServer = new SmtpClient("smtp.live.com");
             mail.From = new MailAddress("moreypushkar24@outlook.com");
@@ -93,9 +96,11 @@ namespace FacebookLoginSel.TestScripts
             article.UploadThArticle();
             test.Log(Status.Info, "Articles Get Uploaded Successfully");            
 
+            //verifying logout
             Assert.IsTrue(driver.FindElement(By.XPath("//img[@class='_s0 _4ooo _1x2_ _1ve7 _1gax img']")).Displayed);
             log.Info("Logout verification successfull");
             
+            //taking screenshot
             Screenshot ss = ((ITakesScreenshot)driver).GetScreenshot();
             ss.SaveAsFile("C:\\Users\\HP\\source\\repos\\FacebookLoginSel\\ScreenShot\\one.png", ScreenshotImageFormat.Png);
         }         

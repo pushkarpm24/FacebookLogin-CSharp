@@ -121,6 +121,7 @@
     <None Include="AccessDataExel\TestData.xlsx" />
     <None Include="App.config" />
     <None Include="Cred.json" />
+    <None Include="Logs\Logs.log" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -140,7 +141,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ExtentReports\" />
-    <Folder Include="Logs\" />
     <Folder Include="ScreenShot\" />
   </ItemGroup>
   <ItemGroup>
